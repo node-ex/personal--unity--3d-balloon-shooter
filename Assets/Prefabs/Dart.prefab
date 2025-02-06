@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dartSpeed: 10
+  balloonPrefab: {fileID: 451371515916030525, guid: 4733ccc62944686458c4e3982c6a77f8, type: 3}
 --- !u!136 &8454218373317112364
 CapsuleCollider:
   m_ObjectHideFlags: 0

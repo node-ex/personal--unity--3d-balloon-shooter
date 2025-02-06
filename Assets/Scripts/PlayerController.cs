@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] GameObject dartPrefab;
     [SerializeField] Transform dartSpawner;
+    bool canShoot = true;
 
     void Update()
     {
@@ -26,9 +27,16 @@ public class PlayerController : MonoBehaviour
 
     void ShootDart()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (canShoot && Input.GetKey(KeyCode.Space))
         {
             Instantiate(dartPrefab, dartSpawner.position, dartSpawner.rotation);
+            canShoot = false;
+            Invoke(nameof(ResetCanShoot), 0.5f);
         }
+    }
+
+    void ResetCanShoot()
+    {
+        canShoot = true;
     }
 }

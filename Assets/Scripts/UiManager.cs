@@ -25,8 +25,8 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        UpdateScore();
         GameManager.BalloonPopped += UpdateScore;
+        UpdateScore();
     }
 
     void OnDestroy()
@@ -44,14 +44,6 @@ public class UiManager : MonoBehaviour
         while (winPanel.alpha < 1)
         {
             winPanel.alpha += Time.deltaTime * fadeSpeed;
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return new WaitForSecondsRealtime(showWinPanelDelayInSeconds);
-
-        while (winPanel.alpha > 0)
-        {
-            winPanel.alpha -= Time.deltaTime * fadeSpeed;
             yield return new WaitForEndOfFrame();
         }
     }

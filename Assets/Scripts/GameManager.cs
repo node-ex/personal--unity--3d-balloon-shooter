@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,12 +20,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        BalloonPopped += OnBalloonPopped;
-    }
-
-    void Start()
-    {
         BalloonsToPop = GameObject.FindGameObjectsWithTag("Balloon").Length;
+
+        BalloonPopped += OnBalloonPopped;
     }
 
     void OnDestroy()
@@ -45,5 +43,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You win!");
         StartCoroutine(UiManager.Instance.ShowWinPanel());
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
